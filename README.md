@@ -1,6 +1,6 @@
 # Quiet Reader — browser extension
 
-[![CI](https://github.com/josh/reader-extension/actions/workflows/ci.yml/badge.svg)](https://github.com/josh/reader-extension/actions)
+[![CI](https://github.com/JCreatesGH/reader-extension/actions/workflows/ci.yml/badge.svg)](https://github.com/JCreatesGH/reader-extension/actions)
 [![Manifest V3](https://img.shields.io/badge/manifest-v3-orange)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
