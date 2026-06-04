@@ -1,0 +1,9 @@
+/* Applied when the content script toggles `.reader-mode` on <html>. */
+html.reader-mode body * { visibility: hidden; }
+html.reader-mode article, html.reader-mode main,
+html.reader-mode article *, html.reader-mode main * { visibility: visible; }
+html.reader-mode article, html.reader-mode main {
+  max-width: 720px !important; margin: 40px auto !important;
+  font-size: 1.15rem !important; line-height: 1.7 !important;
+  background: #fff !important; color: #1a1a1a !important; padding: 24px !important;
+}

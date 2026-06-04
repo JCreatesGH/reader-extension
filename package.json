@@ -1,0 +1,24 @@
+{
+  "name": "quiet-reader-extension",
+  "version": "1.0.0",
+  "description": "MV3 browser extension: reading time + one-click reader mode.",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.json",
+    "zip": "npm run build && zip -r quiet-reader.zip manifest.json popup.html reader.css icons dist"
+  },
+  "keywords": [
+    "chrome-extension",
+    "manifest-v3",
+    "reading-time",
+    "reader-mode",
+    "typescript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "vitest": "^4.0.0",
+    "typescript": "^5.4.0"
+  },
+  "author": "Joshua John <josh202@gmail.com>"
+}
