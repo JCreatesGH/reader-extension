@@ -1,6 +1,6 @@
 {
   "name": "quiet-reader-extension",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "MV3 browser extension: reading time + one-click reader mode.",
   "type": "module",
   "scripts": {

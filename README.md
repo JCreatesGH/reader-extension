@@ -11,8 +11,9 @@ A small **Manifest V3** browser extension that shows the reading time for any ar
 ## Features
 
 - ⏱️ **Reading time** computed from the article's main content (not the whole page chrome).
-- 🧘 **Reader mode** — hides everything except the article body, widens the column, bumps the type.
-- 🧠 **Readability scoring** — picks the real content block by length, sentence density, and link density.
+- 🧘 **Reader mode** — marks the scored content block and reveals just that, so it works on any site (not only `<article>`/`<main>`, but also `.post`/`#content`/etc.), widening the column and bumping the type.
+- 🧠 **Readability scoring** — picks the real content block by length, sentence density, and link density (link density is clamped, so scores never go negative).
+- 🔤 **Entity-aware text** — `extractText` decodes named *and* numeric HTML entities (`&#39;`, `&mdash;`, `&#x263A;`, …) and leaves unknown ones intact.
 - 🔒 Minimal permissions, MV3, TypeScript.
 
 ## Install (developer mode)
@@ -26,14 +27,14 @@ Then in Chrome/Edge: `chrome://extensions` → enable **Developer mode** → **L
 
 ## How it works
 
-- `src/reading.ts` — pure functions: `readingTime`, `countWords`, `extractText`, `scoreBlock`. Fully unit-tested, no browser APIs.
-- `src/content.ts` — finds the best content block on the page and responds to popup messages.
+- `src/reading.ts` — pure functions: `readingTime`, `countWords`, `extractText`, `decodeEntities`, `scoreBlock`, `bestBlockIndex`. Fully unit-tested, no browser APIs.
+- `src/content.ts` — maps page candidates to blocks, uses `bestBlockIndex` to pick the article, marks it `.reader-content`, and responds to popup messages.
 - `src/popup.ts` + `popup.html` — the toolbar UI; `reader.css` powers the reader view.
 
 ## Development
 
 ```bash
-npm test          # 8 tests
+npm test          # 13 tests
 npm run build     # tsc, clean
 ```
 

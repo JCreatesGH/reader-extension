@@ -1,8 +1,19 @@
-/* Applied when the content script toggles `.reader-mode` on <html>. */
+/* Applied when the content script toggles `.reader-mode` on <html> and marks
+   the chosen article block with `.reader-content` (works on any site, not just
+   <article>/<main>). */
 html.reader-mode body * { visibility: hidden; }
+
+html.reader-mode .reader-content,
+html.reader-mode .reader-content * { visibility: visible; }
+
+/* Fallback for the common semantic cases if no block was marked. */
 html.reader-mode article, html.reader-mode main,
 html.reader-mode article *, html.reader-mode main * { visibility: visible; }
-html.reader-mode article, html.reader-mode main {
+
+html.reader-mode .reader-content,
+html.reader-mode:not(:has(.reader-content)) article,
+html.reader-mode:not(:has(.reader-content)) main {
+  position: relative; z-index: 2147483647;
   max-width: 720px !important; margin: 40px auto !important;
   font-size: 1.15rem !important; line-height: 1.7 !important;
   background: #fff !important; color: #1a1a1a !important; padding: 24px !important;
